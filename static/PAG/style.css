@@ -23,6 +23,30 @@ ol {
     background-color: rgb(194, 202, 206);
 }
 
+a:link {
+    color: rgba(221, 17, 17, 0.667);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgba(221, 17, 17, 0.667);
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgba(240, 84, 175, 0.667);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: rgba(221, 17, 17, 0.667);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
 /* h1 {
     background-color: green;
 }
