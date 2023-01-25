@@ -1,0 +1,97 @@
+<!--
+red_team
+default_template.html
+
+Copyright (C) 2023 Secure Ai Labs, Inc. All Rights Reserved.
+Private and Confidential. Internal Use Only.
+
+    This software contains proprietary information which shall not
+    be reproduced or transferred to other documents and shall not
+    be disclosed to others for any purpose without
+    prior written permission of Secure Ai Labs, Inc.
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEFAULT_TEMPLATE</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='PAG/style.css')}}">
+</head>
+
+
+<div class="banner">
+    <div>
+        {% block banner %}
+        <h1 style="border:2px solid Tomato;">
+            <center>{{ team_name }}</center>
+        </h1>
+        <h3>
+            <center>A guided Experience for Patients</center>
+        </h3>
+        {% endblock %}
+        {% block banner_button %}
+        <center>
+            <form method="post" , action="/register">
+                <input type="submit" name="choice" value="Register New User"><br>
+            </form><br />
+            <form method="post" , action="/login" style="display: inline;">
+                <input type="submit" name="choice" value="PAG Portal">
+            </form>
+            <form method="post" , action="/login" style="display: inline;">
+                <input type="submit" name="choice" value="Patient Portal"><br>
+            </form>
+        </center>
+
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %}
+        {% endblock %}
+
+        <hr style="border:1px solid Tomato;">
+    </div>
+</div>
+
+<body>
+    {% block content %}
+    <div>
+
+        <h4>Here's how {{ team_name }} works!</h4>
+        <p>
+        <ol>
+            <li>Talk through your symptoms</li>
+            <li>Get Feedback on your symptoms</li>
+            <li>Choose the best care option for you</li>
+            <li>Matched clinical trials</li>
+            <li>Provide reference materials based off your concerns</li>
+        </ol>
+        </p>
+
+    </div>
+    {% endblock %}
+</body>
+
+<!-- <body>
+    {% block buttons1 %}
+
+    <body>
+        <form method="post" , action="/user">
+            <input type="submit" name="choice" value="Patient Portal"><input type="submit" name="choice"
+                value="PAG Portal"><br>
+            <br />
+
+        </form>
+
+        {% if error %}
+        <p>{{error}}</p>
+        {% endif %}
+    </body>
+    {% endblock %}
+</body> -->
+
+</html>

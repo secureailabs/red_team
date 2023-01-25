@@ -8,14 +8,16 @@ from server import db
 bp = Blueprint("bp", __name__, template_folder="templates")
 
 
+# PAG page
 @bp.route("/")
-def index():
-    return "Home route."
+@bp.route("/home")
+def home():
+    return render_template("default_template.html", team_name="Team Red")
 
 
 @bp.route("/login", methods=("GET", "POST"))
 def login():
-    if request.method == "POST":
+    if request.method == "POST" and request.form["choice"] == "login":
         username = request.form["username"]
         password = request.form["password"]
 
@@ -36,18 +38,18 @@ def login():
 
         flash(error)
 
-    return render_template("login.html")
+    return render_template("login.html", team_name="Team Red")
 
 
 @bp.route("/register", methods=("GET", "POST"))
 def register():
     if request.method == "POST":
-        if request.form["choice"] == "patient":
+        if request.form["choice"] == "Register Patient":
             return redirect(url_for("bp.register_patient"))
-        elif request.form["choice"] == "PAG":
+        elif request.form["choice"] == "Register PAG":
             return redirect(url_for("bp.register_pag"))
 
-    return render_template("register.html")
+    return render_template("register.html", team_name="Team Red")
 
 
 @bp.route("/register/pag", methods=("GET", "POST"))
@@ -76,7 +78,7 @@ def register_pag():
             register_info["password"] = generate_password_hash(register_info["password"])
             db.user.insert_one(register_info)
 
-    return render_template("pag_register.html")
+    return render_template("pag_register.html", team_name="Team Red")
 
 
 @bp.route("/register/patient", methods=("GET", "POST"))
@@ -106,4 +108,4 @@ def register_patient():
             register_info["password"] = generate_password_hash(register_info["password"])
             db.user.insert_one(register_info)
 
-    return render_template("patient_register.html")
+    return render_template("patient_register.html", team_name="Team Red")

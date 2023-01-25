@@ -1,19 +1,16 @@
 <!--templates/login.html-->
+{% extends "default_template.html" %}
+{% block banner_button %}
 
-<DOCTYPE html>
-    <html lang="en">
-    <head>
-        <title>Rregister</title>
-    </head>
-
-    <body>
-        <form method="post", action="/register">
-            <input type="submit" name="choice" value="patient"><br>
-            <input type="submit" name="choice" value="PAG"><br>
+<body>
+    <center>
+        <form method="post" , action="/register">
+            <input type="submit" name="choice" value="Register Patient" style="display: inline;">
+            <input type="submit" name="choice" value="Register PAG"><br>
         </form>
-
-        {% if error %}
-            <p>{{error}}</p>
-        {% endif %}
-    </body>
-    </html>
+    </center>
+    {% if error %}
+    <p>{{error}}</p>
+    {% endif %}
+</body>
+{% endblock %}

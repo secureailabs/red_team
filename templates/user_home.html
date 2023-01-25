@@ -1,0 +1,38 @@
+<!--
+ red_team
+ index.html
+ 
+ Copyright (C) 2023 Secure Ai Labs, Inc. All Rights Reserved.
+ Private and Confidential. Internal Use Only.
+ 
+     This software contains proprietary information which shall not
+     be reproduced or transferred to other documents and shall not
+     be disclosed to others for any purpose without
+     prior written permission of Secure Ai Labs, Inc.
+ 
+ 
+-->
+<!-- change laguage to html -->
+<!-- shortcut to generate boiler plate template type: html:5  will generate boilerplate-->
+{% extends "PAG.html" %}
+{% block banner %}
+<h1> Hello Patient : {{ patient_id }}</h1>
+<h3> A guided Experience for Patients</h3>
+<div class="wrapper">
+    <button class="button">Ready to chat about your symptoms?</button>
+</div>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>
+        Patient Information!
+    </h1>
+    <div>
+        <p>ID:{{patient_id}}</p>
+        <p>Name: John</p>
+        <p>Age: 29</p>
+        <p>Location: Ottawa</p>
+    </div>
+</div>
+{% endblock %}
