@@ -1,0 +1,21 @@
+<!-- templates/regist.html -->
+
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <form method="post" action='/register/pag'>
+            <label>Username:<input type="text" name="username" value=""></label></br>
+            <label>Password:<input type="password" name="password" value=""></label></br>
+            <label>Email:<input type="email" name="email" value=""></label></br>
+            <label>Disease Focus:<input type="disease" name="disease" value=""></label></br>
+            <input type="submit" value="register">
+        </form>
+        
+        {% if error %}
+            <p>{{error}}</p>
+        {% endif %}
+    </body>
+    </html>

@@ -1,0 +1,19 @@
+<!--templates/login.html-->
+
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Rregister</title>
+    </head>
+
+    <body>
+        <form method="post", action="/register">
+            <input type="submit" name="choice" value="patient"><br>
+            <input type="submit" name="choice" value="PAG"><br>
+        </form>
+
+        {% if error %}
+            <p>{{error}}</p>
+        {% endif %}
+    </body>
+    </html>

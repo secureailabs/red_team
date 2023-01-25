@@ -1,0 +1,26 @@
+<!-- templates/regist.html -->
+
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <form method="post" action='/register/patient'>
+            <label>Username:<input type="text" name="username" value=""></label></br>
+            <label>Password:<input type="password" name="password" value=""></label></br>
+            <label>Email:<input type="email" name="email" value=""></label></br>
+            <label>Age:<input type="age" name="age" value=""></label></br>
+            <label>Gender:<input type="gender" name="gender" value=""></label></br>
+            <label>Height(cm):<input type="height" name="height" value=""></label></br>
+            <label>Weight(kg):<input type="weight" name="weight" value=""></label></br>
+            <label>Blood Type:<input type="bloodtype" name="bloodtype" value=""></label></br>
+            <input type="submit" value="register">
+        </form>
+        
+        {% if error %}
+            <p>{{error}}</p>
+        {% endif %}
+    </body>
+    </html>
+    
