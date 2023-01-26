@@ -8,6 +8,14 @@ https://www.mongodb.com/docs/manual/installation/
 
 3. other packages used in projects
 
+```
+# Install openai-whisper for voice to text
+pip install git+https://github.com/openai/whisper.git
+
+# Install keybert for keyword extraction
+pip install keybert
+```
+
 # Run the project
 
 ```
