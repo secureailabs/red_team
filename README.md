@@ -6,7 +6,7 @@ https://flask.palletsprojects.com/en/2.2.x/installation/
 2. Install mongodb:
 https://www.mongodb.com/docs/manual/installation/
 
-3. other packages used in projects
+3. Other packages used in projects
 
 ```
 # Install openai-whisper for voice to text
