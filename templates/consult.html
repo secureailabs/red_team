@@ -1,0 +1,20 @@
+<!--templates/login.html-->
+{% extends "default_template.html" %}
+
+{% block banner_button %}
+
+<body>
+    <h2>Consulting center</h2>
+    
+    <div>
+    </div>
+
+    {% if complete_flag %}
+    <button class="request" id="submit">Submit</button>
+    {% endif %}
+
+    {% if error %}
+    <p>{{error}}</p>
+    {% endif %}
+</body>
+{% endblock %}

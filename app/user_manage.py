@@ -1,3 +1,4 @@
+import json
 from uuid import uuid4
 
 from flask import Blueprint, flash, redirect, render_template, request, url_for
@@ -17,7 +18,7 @@ def home():
 
 @bp.route("/login", methods=("GET", "POST"))
 def login():
-    if request.method == "POST" and request.form["choice"] == "login":
+    if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
 
@@ -34,7 +35,8 @@ def login():
             if user["role"] == "pag":
                 return redirect(url_for("pag"))
             else:
-                return redirect(url_for("patient"))
+                patient_info = json.dumps({"patient_id": username})
+                return redirect(url_for("patient_bp.patient_info", messages=patient_info))
 
         flash(error)
 
@@ -90,6 +92,9 @@ def register_patient():
         register_info["username"] = request.form["username"]
         register_info["password"] = request.form["password"]
         register_info["email"] = request.form["email"]
+        register_info["firstname"] = request.form["firstname"]
+        register_info["lastname"] = request.form["lastname"]
+        register_info["address"] = request.form["address"]
         register_info["age"] = request.form["age"]
         register_info["gender"] = request.form["gender"]
         register_info["height"] = request.form["height"]

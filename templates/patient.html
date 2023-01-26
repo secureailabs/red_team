@@ -12,3 +12,107 @@
  
  
 -->
+
+<body>
+    <header>
+        <h2> Patient {{patient.username}}</h2>
+    </header>
+
+    <div>
+        <h4> {{patient["firstname"]}} {{patient["lastname"]}} </h4>>
+        <ul>
+            <li>Age: {{patient["age"]}}</li> 
+            <li>Gender: {{patient["gender"]}}</li> 
+            <li>Height(cm): {{patient["height"]}}</li> 
+            <li>Weight(kg): {{patient["weight"]}}</li> 
+            <li>BloodType: {{patient["bloodtype"]}}</li> 
+            <li>Email: {{patient["email"]}}</li> 
+            <li>Address: {{patient["address"]}}</li> 
+        </ul>
+    </div>
+
+    <div>
+        <nav>
+            <ul>
+                {% for i, v in records %}
+                    <li id={{i}} onclick="showRecord(this.id)">{{v}}</li>
+                {% endfor %}
+            </ul>
+        </nav>
+        <form method = "post", action = "/patient/consult">
+            <input type="submit" name="consult" value="Start a consult">
+        </form>>
+    </div>
+
+    <div>
+        <h2>Consulting records</h2>
+        {% if detail %}
+        <div class="tab">
+            <button class="tabbutton" id="symptoms" onlick="showContent(this.id)">symptoms</button>
+            <button class="tabbutton" id="diagnosis" onlick="showContent(this.id)">diagnosis</button>
+            <button class="tabbutton" id="suggestions" onlick="showContent(this.id)">suggestions</button>
+            <button class="tabbutton" id="references" onlick="showContent(this.id)">references</button>
+        </div>
+
+        <div id="symptoms" class="tabcontent">
+            <p>{{detail["symptoms"]}}</p>
+        </div>
+        
+        <div id="disgnosis" class="tabcontent">
+            <h5>{{detail["diagnosis"]["disease"]}}</h5>
+            <p>{{detail["diagnosis"]["disease_info"]}}</p>
+        </div>
+        
+        <div id="suggestions" class="tabcontent">
+            <h5>Available medication</h5>
+            {% for key, value in detail["suggestions"]["medication"].items() %}
+                <p><b>{{key}}</b></p>
+                <p>{{value}}</p>
+            {% endfor %}
+            <h5>Available treatment</h5>
+            {% for key, value in detail["suggestions"]["treatment"].items() %}
+                <p><b>{{key}}</b></p>
+                <p>{{value}}</p>
+            {% endfor %}
+        </div>
+
+        <div id="references" class="tabcontent">
+            <h5>Suggested search</h5>
+            <ul>
+                {% for item in detail["references"]["keywords"] %}
+                <li>item</li>
+                {% endfor %}
+            </ul>
+            <h5>Related research</h5>
+            <ul>
+                {% for item in detail["references"]["papers"] %}
+                <li>item</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function showRecord(id){
+            var xhttp = new XMLHttpRequest();
+            record_name = document.getElementById(id).innerHTML;
+            xhttp.open("POST", "/patient", true)
+            xhttp.send("record="+record_name)
+        }
+
+        function showContent(id){
+            var i, tabcontent;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            document.getElementById(id).style.display = "block";
+        }
+    </script>
+
+    {% if error %}
+        <p>{{error}}</p>
+    {% endif %}
+
+</body>
