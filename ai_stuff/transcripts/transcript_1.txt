@@ -1,0 +1,34 @@
+PAG: Hello, how may I help today?
+
+Caller: I'm pretty sure I have the flu and I need advice on how to cope.
+
+PAG: I'm sorry to hear that. Can you tell me your symptoms?
+
+Caller: I have a headache, fever, a cough, muscle pain and swolen glands.
+
+PAG: Ok, it sounds like you do have the flu. How long have you been experiencing these symptoms?
+
+Caller: I've experienced these symptoms for 3 days.
+
+PAG: What treatments have you taken so far?
+
+Caller: I've taken some paracetemol and ibuprofen.
+
+PAG: Ok, please keep hydrated by frinking plenty of water and electrolytes. Continue on the paracetemol and also continue with the ibuprofen to reduce glandular inflamation. Do you have any further questions?
+
+Caller: Yes. Is this fatal?
+
+PAG: The flu is not fatal.
+
+Caller: Can I go into public places?
+
+PAG: Please do not enter public spaces as this will likely infect others.
+
+Caller: How long will this last for?
+
+PAG: The average flu lasts only 5 days or so.
+
+Caller: Thanks, that is all the help I need.
+
+
+

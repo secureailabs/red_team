@@ -1,0 +1,29 @@
+PAG: Hello, how may I help today?
+
+Caller: I'm not sure what's wrong with me but I'm feeling unwell.
+
+PAG: I'm sorry to hear that. Can you tell me your symptoms?
+
+Caller: I have a headache, fever and swolen glands.
+
+PAG: You might have the flu. This should go away on it's own after round 5 days. How long have you been experiencing these symptoms?
+
+Caller: I've experienced these symptoms for 1 day.
+
+PAG: What treatments have you taken so far?
+
+Caller: Nothing.
+
+PAG: Ok, you can take paracetemol to reduce the headache and fever. You can also take ibuprofen to help with the swolen glands. Do you have any further questions?
+
+Caller: Yes. Will I die?
+
+PAG: You will not die.
+
+Caller: What should I do if I'm sick for longer than 5 days?
+
+PAG: You should book an appointment with your GP.
+
+Caller: Thanks, for your help.
+
+PAG: You're welcome, goodbye.
