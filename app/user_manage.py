@@ -18,7 +18,7 @@ def home():
 
 @bp.route("/login", methods=("GET", "POST"))
 def login():
-    if request.method == "POST":
+    if request.method == "POST" and request.form["choice"] == "login":
         username = request.form["username"]
         password = request.form["password"]
 

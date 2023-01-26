@@ -1,9 +1,11 @@
 <!-- templates/regist.html -->
 {% extends "default_template.html" %}
-{% block banner_button %}
+{% block sidebar %}
+{% endblock %}
+{% block content %}
 
 <body>
-    <p>Please fill in the following to create a patient profile.</p>
+    Please fill in the following to create a patient profile.
     <form method="post" action='/register/patient'>
         <label>Username:<input type="text" name="username" value=""></label></br>
         <label>Password:<input type="password" name="password" value=""></label></br>

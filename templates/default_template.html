@@ -25,73 +25,59 @@ Private and Confidential. Internal Use Only.
 </head>
 
 
-<div class="banner">
-    <div>
-        {% block banner %}
-        <h1 style="border:2px solid Tomato;">
-            <center><a href="http://127.0.0.1:5000"> {{ team_name }}</a></center>
-        </h1>
-        <h3>
-            <center>A guided Experience for Patients</center>
-        </h3>
-        {% endblock %}
-        {% block banner_button %}
-        <center>
-            <form method="post" , action="/register">
-                <input type="submit" name="choice" value="Register New User"><br>
-            </form><br />
-            <form method="post" , action="/login" style="display: inline;">
-                <input type="submit" name="choice" value="PAG Portal">
-            </form>
-            <form method="post" , action="/login" style="display: inline;">
-                <input type="submit" name="choice" value="Patient Portal"><br>
-            </form>
-        </center>
-
-        {% if error %}
-        <p>{{error}}</p>
-        {% endif %}
-        {% endblock %}
-
-        <hr style="border:1px solid Tomato;">
-    </div>
-</div>
-
 <body>
-    {% block content %}
-    <div>
+    <div class="grid">
 
-        <h4>Here's how {{ team_name }} works!</h4>
-        <p>
-        <ol>
-            <li>Talk through your symptoms</li>
-            <li>Get Feedback on your symptoms</li>
-            <li>Choose the best care option for you</li>
-            <li>Matched clinical trials</li>
-            <li>Provide reference materials based off your concerns</li>
-        </ol>
-        </p>
-
+        <div class="slogan">
+            {% block slogan %}
+            <h4>Here's how {{ team_name }} works!</h4>
+            <p>
+            <ol>
+                <li>Talk through your symptoms</li>
+                <li>Get Feedback on your symptoms</li>
+                <li>Choose the best care option for you</li>
+                <li>Matched clinical trials</li>
+                <li>Provide reference materials based off your concerns</li>
+            </ol>
+            </p>
+            {% endblock %}
+        </div>
+        <div class="banner">
+            {% block banner %}
+            <h1>
+                <center><a href="http://127.0.0.1:5000"> {{ team_name }}</a></center>
+            </h1>
+            <h3>
+                <center>A guided Experience for Patients</center>
+            </h3>
+            {% endblock %}
+        </div>
+        <div class="sidebar">
+            {% block sidebar %}
+            <center>
+                <br>
+                <form method="post" , action="/register">
+                    <input type="submit" name="choice" value="Register New User"><br>
+                </form><br />
+                <form method="post" , action="/login">
+                    <input type="submit" name="choice" value="PAG Portal"><br>
+                </form><br />
+                <form method="post" , action="/login">
+                    <input type="submit" name="choice" value="Patient Portal"><br>
+                </form><br />
+                {% if error %}
+                <p>{{error}}</p>
+                {% endif %}
+            </center>
+            {% endblock %}
+        </div>
+        <div class="content">
+            {% block content %}
+            <center>CONTENT</center>
+            {% endblock %}
+        </div>
     </div>
-    {% endblock %}
+
 </body>
-
-<!-- <body>
-    {% block buttons1 %}
-
-    <body>
-        <form method="post" , action="/user">
-            <input type="submit" name="choice" value="Patient Portal"><input type="submit" name="choice"
-                value="PAG Portal"><br>
-            <br />
-
-        </form>
-
-        {% if error %}
-        <p>{{error}}</p>
-        {% endif %}
-    </body>
-    {% endblock %}
-</body> -->
 
 </html>

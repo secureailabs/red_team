@@ -13,6 +13,41 @@
  * 
  */
 
+.grid {
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "slogan banner"
+        "sidebar content";
+
+}
+
+.slogan {
+    color: rgba(221, 17, 17, 0.667);
+    background-color: rgb(247, 137, 117);
+}
+
+.banner {
+    color: rgba(221, 17, 17, 0.667);
+    background-color: rgb(194, 202, 206);
+}
+
+.sidebar {
+    color: rgb(194, 202, 206);
+    background-color: rgb(221, 17, 17, 0.667);
+    align-self: center;
+    height: 100%;
+    /* width: 100vw; */
+}
+
+.content {
+    color: rgba(221, 17, 17, 0.667);
+    background-color: rgb(194, 202, 206);
+    /* height: 100vw; */
+}
+
+
 body {
     color: rgba(221, 17, 17, 0.667);
     background-color: rgb(194, 202, 206);
@@ -20,7 +55,7 @@ body {
 
 ol {
     color: rgba(34, 32, 32, 0.667);
-    background-color: rgb(194, 202, 206);
+    background-color: rgb(247, 137, 117);
 }
 
 a:link {
