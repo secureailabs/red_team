@@ -12,3 +12,34 @@
  
  
 -->
+{% extends "default_template.html" %}
+{% block content %}
+<div class="grid-info">
+    <div class="user_info">
+
+        <body>
+            <header>
+                <h2> PAG {{pag.username}}</h2>
+            </header>
+
+            <div>
+                <h3><u>Basic PAG Information</u></h3>
+                <h4> {{pag["firstname"]}} {{pag["lastname"]}} </h4>
+                <ul>
+                    <li>Email: {{pag["email"]}}</li>
+                    <li>Disease Focus: {{pag["disease"]}}</li>
+                </ul>
+            </div>
+
+        </body>
+    </div>
+    <div class="extra_info">
+        <br>
+        EXTRA INFORMATION
+    </div>
+    <div class="summary">
+        <br>
+        SUMMARY OF INFORMATION
+    </div>
+
+    {% endblock %}

@@ -35,7 +35,8 @@ def login():
 
         if error is None:
             if user["role"] == "pag":
-                return redirect(url_for("pag"))
+                pag_info = json.dumps({"pag_id": username})
+                return redirect(url_for("pag_bp.pag_info", messages=pag_info))
             else:
                 patient_info = json.dumps({"patient_id": username})
                 return redirect(url_for("patient_bp.patient_info", messages=patient_info))
