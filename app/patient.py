@@ -21,14 +21,14 @@ def patient_info():
     elif request.method == "POST":
         record_id = request.record
         record = db.record.find_one({"id": record_id})
-        return render_template("patient.html", patient=patient, records=records, detail=record)
+        return render_template("patient.html", patient=patient, records=records, detail=record, team_name="Team Red")
 
-    return render_template("patient.html", patient=patient, records=records, detail=None)
+    return render_template("patient.html", patient=patient, records=records, detail=None, team_name="Team Red")
 
 
 @patient_bp.route("/patient/consult", methods=("GET", "POST"))
 def patient_consult():
     if request.method == "POST":
-        return render_template("consult.html")
+        return render_template("consult.html", team_name="Team Red")
 
-    return render_template("consult.html")
+    return render_template("consult.html", team_name="Team Red")

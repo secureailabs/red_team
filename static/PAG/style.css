@@ -17,6 +17,7 @@
     display: grid;
     grid-template-columns: 20% 1fr;
     grid-template-rows: 1fr 1fr;
+    grid-gap: 2px;
     grid-template-areas:
         "slogan banner"
         "sidebar content";
@@ -45,6 +46,34 @@
     color: rgba(221, 17, 17, 0.667);
     background-color: rgb(194, 202, 206);
     /* height: 100vw; */
+}
+
+.grid-info {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    /* grid-template-rows: 1fr 1fr; */
+    grid-template-areas:
+        "basic_info location";
+}
+
+.user_info {
+    color: rgba(70, 67, 67, 0.667);
+    background-color: rgb(159, 174, 182);
+    /* border: 1px solid #bbb; */
+    /* padding: 10px; */
+}
+
+.location {
+    color: rgba(70, 67, 67, 0.667);
+    background-color: rgb(137, 142, 145);
+    align-items: center;
+}
+
+.summary {
+    color: rgba(70, 67, 67, 0.667);
+    background-color: rgb(194, 202, 206);
+    align-items: left;
+    grid-column-end: span 2;
 }
 
 

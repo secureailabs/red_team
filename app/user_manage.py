@@ -81,7 +81,7 @@ def register_pag():
         if error is None:
             register_info["password"] = generate_password_hash(register_info["password"])
             db.user.insert_one(register_info)
-
+            return redirect(url_for("bp.login"))
     return render_template("pag_register.html", team_name="Team Red")
 
 
@@ -114,5 +114,6 @@ def register_patient():
         if error is None:
             register_info["password"] = generate_password_hash(register_info["password"])
             db.user.insert_one(register_info)
+            return redirect(url_for("bp.login"))
 
     return render_template("patient_register.html", team_name="Team Red")
