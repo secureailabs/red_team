@@ -10,15 +10,17 @@ bp = Blueprint("bp", __name__, template_folder="templates")
 
 
 # PAG page
-@bp.route("/")
+@bp.route("/", methods=("GET", "POST"))
 @bp.route("/home")
 def home():
+    if request.method == "POST" and "choice" in request.form:
+        return redirect(url_for("bp.login"))
     return render_template("default_template.html", team_name="Team Red")
 
 
 @bp.route("/login", methods=("GET", "POST"))
 def login():
-    if request.method == "POST" and request.form["choice"] == "login":
+    if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
 
