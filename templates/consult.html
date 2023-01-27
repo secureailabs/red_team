@@ -8,14 +8,53 @@
     <h2>Consulting center</h2>
 
     <div>
+        {% if content %}
+            <h4>{{content["text"]}}</h4>
+            <form method="post", action="/patient/consult">
+            {% if content["type"]=="text" %}
+                <input type="text", name="symptoms", value="symptoms"><br>
+            {% elif content["type"]=="single" %}
+                <input type="radio", name="single", value="{{'present_'+content['items'][0]['id']}}">
+                <label for="single">Yes</label><br>
+                <input type="radio", name="single", value="{{'absent_'+content['items'][0]['id']}}">
+                <label for="single">No</label><br>
+                <input type="radio", name="single", value="{{'unkown_'+content['items'][0]['id']}}">
+                <label for="single">Not Sure</label><br>
+            {% elif content["type"]=="group_single" %}
+                {% for choice in content["items"] %}
+                    <input type="radio", name="group_single", value="{{choice['id']}}">
+                    <label for="{{choice['id']}}">{{choice['name']}}</label><br>
+                {% endfor %}
+            {% elif content["type"]=="group_multiple" %}
+                {% for choice in content["items"] %}
+                    <input type="checkbox", name="{{choice['id']}}", value="{{choice['id']}}">
+                    <label for="{{choice['id']}}">{{choice["name"]}}</label><br>
+                {% endfor %}
+            {% endif %}
+            <input class="request" type="submit" name="submit" value="submit">
+            </form>
+        {% else %}
+            <h4>Your diagnosis</h4>
+            <table>
+                <tr>
+                    <th>Disease</th>
+                    <th>Probability</th>
+                </tr>
+                {% for item in diagnosis %}
+                <tr>
+                    <td>{{item["name"]}}</td>
+                    <td>{{item["probability"]}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <form method="post" , action="/patient">
+                <input type="submit" name="return" value="Return"><br>
+            </form><br />
+        {% endif %}
     </div>
 
-    {% if complete_flag %}
-    <button class="request" id="submit">Submit</button>
-    {% endif %}
-
     {% if error %}
-    <p>{{error}}</p>
+        <p>{{error}}</p>
     {% endif %}
 </body>
 {% endblock %}

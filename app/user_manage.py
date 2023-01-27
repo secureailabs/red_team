@@ -28,6 +28,7 @@ def login():
         error = None
 
         print(user, flush=True)
+        user.pop("_id")
         if user is None:
             error = "Incorrect username"
         elif not check_password_hash(user["password"], password):
@@ -35,10 +36,10 @@ def login():
 
         if error is None:
             if user["role"] == "pag":
-                pag_info = json.dumps({"pag_id": username})
+                pag_info = json.dumps(user)
                 return redirect(url_for("pag_bp.pag_info", messages=pag_info))
             else:
-                patient_info = json.dumps({"patient_id": username})
+                patient_info = json.dumps(user)
                 return redirect(url_for("patient_bp.patient_info", messages=patient_info))
 
         flash(error)
@@ -103,6 +104,7 @@ def register_patient():
         register_info["height"] = request.form["height"]
         register_info["weight"] = request.form["weight"]
         register_info["bloodtype"] = request.form["bloodtype"]
+        register_info["records"] = []
         register_info["role"] = "patient"
 
         if not register_info["username"]:

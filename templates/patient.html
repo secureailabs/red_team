@@ -17,14 +17,14 @@
 {% block sidebar %}
 <div>
     <nav>
-        <ul>
-            {% for i, v in records %}
-            <li id={{i}} onclick="showRecord(this.id)">{{v}}</li>
+        <form method="post", action="/patient">
+            {% for i in records %}
+            <input type="submit" name="check_record" value="{{i}}">
             {% endfor %}
-        </ul>
+        </form>
     </nav>
     <center>
-        <form method="post" , action="/patient/consult">
+        <form method="post" , action="/patient">
             <input type="submit" name="consult" value="Start a consult">
         </form>
     </center>
@@ -34,7 +34,7 @@
     <center>
         <h2>Consulting records</h2>
     </center>
-    {% if detail %}
+    {% if detail is not none %}
     <div class="tab">
         <button class="tabbutton" id="symptoms" onlick="showContent(this.id)">symptoms</button>
         <button class="tabbutton" id="diagnosis" onlick="showContent(this.id)">diagnosis</button>
@@ -43,40 +43,43 @@
     </div>
 
     <div id="symptoms" class="tabcontent">
-        <p>{{detail["symptoms"]}}</p>
+        <ul>
+            {% for symptom in detail["symptoms"] %}
+            <li>{{symptom}}</li>
+            {% endfor %}
+        </ul>
     </div>
 
     <div id="disgnosis" class="tabcontent">
-        <h5>{{detail["diagnosis"]["disease"]}}</h5>
-        <p>{{detail["diagnosis"]["disease_info"]}}</p>
+        <table>
+            <tr>
+                <th>Disease</th>
+                <th>Prevalence</th>
+                <th>Severity</th>
+                <th>Probability</th>
+            </tr>
+            {% for condition in detail["conditions"] %}
+            <tr>
+                <td>{{condition["name"]}}</td>
+                <td>{{condition["prevalence"]}}</td>
+                <td>{{condition["severity"]}}</td>
+                <td>{{condition["probability"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
     </div>
 
     <div id="suggestions" class="tabcontent">
-        <h5>Available medication</h5>
-        {% for key, value in detail["suggestions"]["medication"].items() %}
-        <p><b>{{key}}</b></p>
-        <p>{{value}}</p>
-        {% endfor %}
-        <h5>Available treatment</h5>
-        {% for key, value in detail["suggestions"]["treatment"].items() %}
-        <p><b>{{key}}</b></p>
+        {% for key, value in detail["suggestions"].items() %}
+        <h5>{{key}}</h5>
         <p>{{value}}</p>
         {% endfor %}
     </div>
 
     <div id="references" class="tabcontent">
-        <h5>Suggested search</h5>
-        <ul>
-            {% for item in detail["references"]["keywords"] %}
-            <li>item</li>
-            {% endfor %}
-        </ul>
-        <h5>Related research</h5>
-        <ul>
-            {% for item in detail["references"]["papers"] %}
-            <li>item</li>
-            {% endfor %}
-        </ul>
+        <a href="www.google.com">Google</a>
+        <a href="www.wikipedia.org">wikipedia</a>
+        <a href="pubmed.ncbi.nlm.nih.gov">Pubmed</a>
     </div>
     {% endif %}
 </div>
@@ -93,7 +96,7 @@
         var i, tabcontent;
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+            tabcontent[i].style.display = "hidden";
         }
         document.getElementById(id).style.display = "block";
     }
