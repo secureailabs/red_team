@@ -11,9 +11,11 @@ collection_record = db["record"]
 
 
 if __name__ == "server":
+    from app.pag import pag_bp
     from app.patient import patient_bp
     from app.user_manage import bp
 
     server.register_blueprint(bp)
     server.register_blueprint(patient_bp)
+    server.register_blueprint(pag_bp)
     server.run(debug=True)
