@@ -17,6 +17,7 @@ class PatientView(MethodView):
         self,
     ):
         self.patient_info = {}
+        self.current_record = None
 
     def get(
         self,
@@ -36,6 +37,12 @@ class PatientView(MethodView):
     def post(
         self,
     ):
+        show = {
+            "symptoms": None,
+            "diagnosis": None,
+            "suggestions": None,
+            "references": None,
+        }
         if "consult" in request.form:
             msg = {
                 "username": self.patient_info["username"],
@@ -54,17 +61,30 @@ class PatientView(MethodView):
                 patient=self.patient_info,
                 records=records,
                 detail=None,
+                show=show,
                 team_name="Team Red",
             )
 
-        record_id = request.form["check_record"]
-        record = db.record.find_one({"id": record_id})
-        record.pop("_id")
+        if "check_record" in request.form:
+            record_id = request.form["check_record"]
+            self.current_record = db.record.find_one({"id": record_id})
+            self.current_record.pop("_id")
+
+        if "symptomstab" in request.form:
+            show["symptoms"] = True
+        elif "diagnosistab" in request.form:
+            show["diagnosis"] = True
+        elif "suggestionstab" in request.form:
+            show["suggestions"] = True
+        elif "referencestab" in request.form:
+            show["references"] = True
+
         return render_template(
             "patient.html",
             patient=self.patient_info,
             records=self.patient_info["records"],
-            detail=record,
+            detail=self.current_record,
+            show=show,
             team_name="Team Red",
         )
 

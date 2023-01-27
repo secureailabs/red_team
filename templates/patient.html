@@ -17,11 +17,14 @@
 {% block sidebar %}
 <div>
     <nav>
-        <form method="post", action="/patient">
-            {% for i in records %}
-            <input type="submit" name="check_record" value="{{i}}">
-            {% endfor %}
-        </form>
+    <center>
+        <h2>Consulting records</h2>
+    </center>
+    <form method="post", action="/patient">
+        {% for i in records %}
+        <input type="submit" name="check_record" value="{{i}}">
+        {% endfor %}
+    </form>
     </nav>
     <center>
         <form method="post" , action="/patient">
@@ -29,78 +32,6 @@
         </form>
     </center>
 </div>
-
-<div>
-    <center>
-        <h2>Consulting records</h2>
-    </center>
-    {% if detail is not none %}
-    <div class="tab">
-        <button class="tabbutton" id="symptoms" onlick="showContent(this.id)">symptoms</button>
-        <button class="tabbutton" id="diagnosis" onlick="showContent(this.id)">diagnosis</button>
-        <button class="tabbutton" id="suggestions" onlick="showContent(this.id)">suggestions</button>
-        <button class="tabbutton" id="references" onlick="showContent(this.id)">references</button>
-    </div>
-
-    <div id="symptoms" class="tabcontent">
-        <ul>
-            {% for symptom in detail["symptoms"] %}
-            <li>{{symptom}}</li>
-            {% endfor %}
-        </ul>
-    </div>
-
-    <div id="disgnosis" class="tabcontent">
-        <table>
-            <tr>
-                <th>Disease</th>
-                <th>Prevalence</th>
-                <th>Severity</th>
-                <th>Probability</th>
-            </tr>
-            {% for condition in detail["conditions"] %}
-            <tr>
-                <td>{{condition["name"]}}</td>
-                <td>{{condition["prevalence"]}}</td>
-                <td>{{condition["severity"]}}</td>
-                <td>{{condition["probability"]}}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-
-    <div id="suggestions" class="tabcontent">
-        {% for key, value in detail["suggestions"].items() %}
-        <h5>{{key}}</h5>
-        <p>{{value}}</p>
-        {% endfor %}
-    </div>
-
-    <div id="references" class="tabcontent">
-        <a href="www.google.com">Google</a>
-        <a href="www.wikipedia.org">wikipedia</a>
-        <a href="pubmed.ncbi.nlm.nih.gov">Pubmed</a>
-    </div>
-    {% endif %}
-</div>
-
-<script>
-    function showRecord(id) {
-        var xhttp = new XMLHttpRequest();
-        record_name = document.getElementById(id).innerHTML;
-        xhttp.open("POST", "/patient", true)
-        xhttp.send("record=" + record_name)
-    }
-
-    function showContent(id) {
-        var i, tabcontent;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "hidden";
-        }
-        document.getElementById(id).style.display = "block";
-    }
-</script>
 
 {% if error %}
 <p>{{error}}</p>
@@ -139,8 +70,61 @@
     <div class="summary">
         <br>
         SUMMARY OF INFORMATION
+        <div>
+        {% if detail is not none %}
+            <div class="tab">
+                <form method="post" action="/patient">
+                <input class="tabbutton" type="submit" name="symptomstab" value="symptoms">
+                <input class="tabbutton" type="submit" name="diagnosistab" value="diagnosis">
+                <input class="tabbutton" type="submit" name="suggestionstab" value="suggestions">
+                <input class="tabbutton" type="submit" name="referencestab" value="references">
+            </div>
+            {% if show["symptoms"] %}
+            <div id="symptoms" class="tabcontent">
+                <ul>
+                    {% for symptom in detail["symptoms"] %}
+                    <li>{{symptom}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if show["diagnosis"] %}
+            <div id="disgnosis" class="tabcontent">
+                <table>
+                    <tr>
+                        <th>Disease</th>
+                        <th>Prevalence</th>
+                        <th>Severity</th>
+                        <th>Probability</th>
+                    </tr>
+                    {% for condition in detail["conditions"] %}
+                    <tr>
+                        <td>{{condition["name"]}}</td>
+                        <td>{{condition["prevalence"]}}</td>
+                        <td>{{condition["severity"]}}</td>
+                        <td>{{condition["probability"]}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+            {% if show["suggestions"] %}
+            <div id="suggestions" class="tabcontent">
+                {% for key, value in detail["suggestions"].items() %}
+                <h5>{{key}}</h5>
+                <p>{{value}}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if show["references"] %}
+            <div id="references" class="tabcontent">
+                <a href="www.google.com">Google</a>
+                <a href="www.wikipedia.org">wikipedia</a>
+                <a href="pubmed.ncbi.nlm.nih.gov">Pubmed</a>
+            </div>
+            {% endif %}
+        {% endif %}
+        </div>
     </div>
-
-
 </div>
 {% endblock %}
