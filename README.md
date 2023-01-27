@@ -22,3 +22,17 @@ pip install keybert
 flask --app server --debug run
 ```
 
+# Patient register:
+
+username -- need to be unique, different from what you have used before(include failed registration attempts)
+password -- no restriction
+email -- no restriction
+firstname -- no restriction
+lastname -- no restriction
+address -- no restriction
+age -- needs to be an adult, greater than 20
+gender -- string, "male" or "female"
+height -- normal human height
+weight -- normal human weight
+bloodtype -- A, B, AB or O
+
