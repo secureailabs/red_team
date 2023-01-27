@@ -14,6 +14,28 @@
 -->
 {% extends "default_template.html" %}
 {% block sidebar %}
+<div>
+    <center>
+        <h2>Patient records</h2>
+    </center>
+
+    <body>
+        <nav>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+                {% for patient in patients %}
+                <tr>
+                    <td>{{ patient._id }}</td>
+                    <td>{{ patient.username }}</td>
+                </tr><br>
+                {% endfor %}
+            </table>
+        </nav>
+    </body>
+</div>
 {% endblock %}
 {% block content %}
 <div class="grid-info">
@@ -42,6 +64,26 @@
     <div class="summary">
         <br>
         SUMMARY OF INFORMATION
+        <p>
+
+            <body>
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Records</th>
+                    </tr>
+                    {% for patient in patients %}
+                    <tr>
+                        <td>{{ patient._id }}</td>
+                        <td>{{ patient.username }}</td>
+                        <td>{{ patient.records }}</td>
+                    </tr><br>
+                    {% endfor %}
+                </table>
+            </body>
+        </p>
+
     </div>
 
     {% endblock %}
