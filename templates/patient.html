@@ -17,14 +17,14 @@
 {% block sidebar %}
 <div>
     <nav>
-    <center>
-        <h2>Consulting records</h2>
-    </center>
-    <form method="post", action="/patient">
-        {% for i in records %}
-        <input type="submit" name="check_record" value="{{i}}">
-        {% endfor %}
-    </form>
+        <center>
+            <h2>Consulting records</h2>
+        </center>
+        <form method="post" , action="/patient">
+            {% for i in records %}
+            <input type="submit" name="check_record" value="{{i}}">
+            {% endfor %}
+        </form>
     </nav>
     <center>
         <form method="post" , action="/patient">
@@ -71,13 +71,13 @@
         <br>
         SUMMARY OF INFORMATION
         <div>
-        {% if detail is not none %}
+            {% if detail is not none %}
             <div class="tab">
                 <form method="post" action="/patient">
-                <input class="tabbutton" type="submit" name="symptomstab" value="symptoms">
-                <input class="tabbutton" type="submit" name="diagnosistab" value="diagnosis">
-                <input class="tabbutton" type="submit" name="suggestionstab" value="suggestions">
-                <input class="tabbutton" type="submit" name="referencestab" value="references">
+                    <input class="tabbutton" type="submit" name="symptomstab" value="symptoms">
+                    <input class="tabbutton" type="submit" name="diagnosistab" value="diagnosis">
+                    <input class="tabbutton" type="submit" name="suggestionstab" value="suggestions">
+                    <input class="tabbutton" type="submit" name="referencestab" value="references">
             </div>
             {% if show["symptoms"] %}
             <div id="symptoms" class="tabcontent">
@@ -118,12 +118,12 @@
             {% endif %}
             {% if show["references"] %}
             <div id="references" class="tabcontent">
-                <a href="www.google.com">Google</a>
-                <a href="www.wikipedia.org">wikipedia</a>
-                <a href="pubmed.ncbi.nlm.nih.gov">Pubmed</a>
+                <a href="https://www.google.com">Google</a><br>
+                <a href="https://www.wikipedia.org">wikipedia</a><br>
+                <a href="https://pubmed.ncbi.nlm.nih.gov">Pubmed</a><br>
             </div>
             {% endif %}
-        {% endif %}
+            {% endif %}
         </div>
     </div>
 </div>

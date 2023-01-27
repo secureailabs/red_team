@@ -105,7 +105,7 @@ class ConsultView(MethodView):
 
     def get(self):
         content = {
-            "text": "Please input your symptoms in English",
+            "text": "Please input your symptoms in English ex: fever, headache",
             "type": "text",
         }
         message = json.loads(request.args["messages"])
