@@ -24,7 +24,7 @@ pag_bp = Blueprint("pag_bp", __name__, template_folder="templates")
 
 @pag_bp.route("/pag", methods=("GET", "POST"))
 def pag_info():
-    pag_id = json.loads(request.args["messages"])["pag_id"]
+    pag_id = json.loads(request.args["messages"]).get("username")
     pag = db.user.find_one({"username": pag_id})
 
     return render_template("pag.html", pag=pag, team_name="Team Red")
