@@ -37,14 +37,14 @@
 }
 
 .sidebar {
-    color: rgb(194, 202, 206);
-    background-color: rgb(247, 137, 117);
+    color: rgba(209, 215, 250, 0.952);
+    background-color: rgb(159, 174, 182);
     height: 100vh;
 }
 
 .content {
     color: rgba(221, 17, 17, 0.667);
-    background-color: rgb(159, 174, 182);
+    background-color: rgb(194, 202, 206);
     height: 100vh;
 }
 
@@ -57,14 +57,15 @@
 }
 
 .user_info {
-    color: rgba(70, 67, 67, 0.667);
-    background-color: rgb(159, 174, 182);
+    color: rgba(209, 215, 250, 0.952);
+    background-color: rgb(247, 137, 117);
+    /* background-color: rgb(159, 174, 182); */
     /* border: 1px solid #bbb; */
     /* padding: 10px; */
 }
 
 .extra_info {
-    color: rgba(34, 32, 32, 0.667);
+    color: rgba(209, 215, 250, 0.952);
     background-color: rgb(137, 142, 145);
 }
 
@@ -79,6 +80,7 @@ body {
     color: rgba(70, 67, 67, 0.667);
     background-color: rgb(194, 202, 206);
 }
+
 
 ol {
     color: rgba(34, 32, 32, 0.667);

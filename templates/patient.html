@@ -22,8 +22,11 @@
         </center>
         <form method="post" , action="/patient">
             {% for i in records %}
-            <input type="submit" name="check_record" value="{{i}}">
-            {% endfor %}
+            <center>
+                <input type="submit" name="check_record" value="{{i}}">
+            </center>
+        </form>
+        {% endfor %}
         </form>
     </nav>
     <center>
