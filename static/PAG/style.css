@@ -137,3 +137,13 @@ fieldset {
     padding: 0;
     width: 100%;
 }
+
+input[type=submit] {
+    padding: 5px 15px;
+    background: rgb(245, 108, 108);
+    border: 2px solid #ccc;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+
+}

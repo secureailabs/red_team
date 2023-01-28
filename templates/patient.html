@@ -17,23 +17,23 @@
 {% block sidebar %}
 <div>
     <nav>
+        <br>
         <center>
+            <form method="post" , action="/patient">
+                <input type="submit" name="consult" value="Start a consult" style="height:4vh; width:28vh">
+            </form>
             <h2>Consulting records</h2>
         </center>
         <form method="post" , action="/patient">
             {% for i in records %}
             <center>
-                <input type="submit" name="check_record" value="{{i}}">
+                <input type="submit" name="check_record" value="{{i}}" style="width:28vh">
             </center>
         </form>
         {% endfor %}
         </form>
     </nav>
-    <center>
-        <form method="post" , action="/patient">
-            <input type="submit" name="consult" value="Start a consult">
-        </form>
-    </center>
+
 </div>
 
 {% if error %}
@@ -77,13 +77,13 @@
             {% if detail is not none %}
             <div class="tab">
                 <form method="post" action="/patient">
-                    <input class="tabbutton" type="submit" name="symptomstab" value="symptoms">
-                    <input class="tabbutton" type="submit" name="diagnosistab" value="diagnosis">
-                    <input class="tabbutton" type="submit" name="suggestionstab" value="suggestions">
-                    <input class="tabbutton" type="submit" name="referencestab" value="references">
+                    <input class="tabbutton" type="submit" name="symptomstab" value="symptoms" style="width:28vh">
+                    <input class="tabbutton" type="submit" name="diagnosistab" value="diagnosis" style="width:28vh">
+                    <input class="tabbutton" type="submit" name="suggestionstab" value="suggestions" style="width:28vh">
+                    <input class="tabbutton" type="submit" name="referencestab" value="references" style="width:28vh">
             </div>
             {% if show["symptoms"] %}
-            <div id="symptoms" class="tabcontent">
+            <div id="symptoms" class="tabcontent" style="margin-left: 2vh;">
                 <ul>
                     {% for symptom in detail["symptoms"] %}
                     <li>{{symptom}}</li>
@@ -92,7 +92,7 @@
             </div>
             {% endif %}
             {% if show["diagnosis"] %}
-            <div id="disgnosis" class="tabcontent">
+            <div id="diagnosis" class="tabcontent" style="margin-left: 2vh;">
                 <table>
                     <tr>
                         <th>Disease</th>
@@ -112,7 +112,7 @@
             </div>
             {% endif %}
             {% if show["suggestions"] %}
-            <div id="suggestions" class="tabcontent">
+            <div id="suggestions" class="tabcontent" style="margin-left: 2vh;">
                 {% for key, value in detail["suggestions"].items() %}
                 <h5>{{key}}</h5>
                 <p>{{value}}</p>
@@ -120,10 +120,10 @@
             </div>
             {% endif %}
             {% if show["references"] %}
-            <div id="references" class="tabcontent">
-                <a href="https://www.google.com">Google</a><br>
-                <a href="https://www.wikipedia.org">wikipedia</a><br>
-                <a href="https://pubmed.ncbi.nlm.nih.gov">Pubmed</a><br>
+            <div id="references" class="tabcontent" style="margin-left: 2vh; color: rgb(245, 108, 108);">
+                <a href="https://www.google.com" style="color: rgb(245, 108, 108);">Google</a><br>
+                <a href="https://www.wikipedia.org" style="color: rgb(245, 108, 108);">wikipedia</a><br>
+                <a href="https://pubmed.ncbi.nlm.nih.gov" style="color: rgb(245, 108, 108);">Pubmed</a><br>
             </div>
             {% endif %}
             {% endif %}
