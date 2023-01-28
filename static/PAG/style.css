@@ -129,3 +129,11 @@ td {
     border: 1px solid;
     color: rgba(34, 32, 32, 0.667);
 }
+
+fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+}

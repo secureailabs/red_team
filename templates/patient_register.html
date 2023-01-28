@@ -9,19 +9,34 @@
         <h4>Please fill in the following to create a patient profile.</h4>
     </div>
     <form method="post" action="/register/patient" style="margin-left: 2vh;">
-        <label>Username:<input type="text" name="username" value=""></label></br>
-        <label>Password:<input type="password" name="password" value=""></label></br>
-        <label>Email:<input type="email" name="email" value=""></label></br>
-        <label>First Name:<input type="firstname" name="firstname" value=""></label></br>
-        <label>Last Name:<input type="lastname" name="lastname" value=""></label></br>
-        <label>Address:<input type="address" name="address" value=""></label></br>
-        <label>Age:<input type="age" name="age" value=""></label></br>
-        <label>Gender:<input type="gender" name="gender" value=""></label></br>
-        <label>Height(cm):<input type="height" name="height" value=""></label></br>
-        <label>Weight(kg):<input type="weight" name="weight" value=""></label></br>
-        <label>Blood Type:<input type="bloodtype" name="bloodtype" value=""></label></br>
+        <input style="width: 300px;" placeholder=" Specify a username?" type="text" name="username" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="Specify a password." type="password" name="password" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="What is your email?" type="email" name="email" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="What is your firstname?" type="firstname" name="firstname" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="What is your lastname?" type="lastname" name="lastname" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="Specify your address." type="address" name="address" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="What is your age?" type="age" name="age" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="Gender: (male | female)" type="gender" name="gender" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="Specify your height in cm." type="height" name="height" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="Specify your weight in kg." type="weight" name="weight" value="">
+        <br></br>
+        <input style="width: 300px;" placeholder="Blood type: ( A | B | AB | O )" type="bloodtype" name="bloodtype"
+            value="">
+        <br></br>
         <input type="submit" value="Register">
     </form>
+
+
+
 
     {% if error %}
     <p>{{error}}</p>
