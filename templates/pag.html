@@ -16,33 +16,25 @@ Private and Confidential. Internal Use Only.
 {% block sidebar %}
 <div>
     <center>
-        <h2>Patient records</h2>
+        <h2>Patient List</h2>
+        <table style="width: 90%; text-align: center">
+            <tr>
+                <th>ID</th>
+            </tr>
+            <tr>
+                {% for patient in patients %}
+                <td>
+                    <div class="tab">
+                        <form method="post" action="/pag">
+                            <input style="width: 100%;" type="submit" name="check_record" value={{patient._id}}>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            <br>
+        </table>
     </center>
-
-    <body>
-        <nav>
-            <center>
-                <table style="width: 100%; text-align: center">
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                    </tr>
-                    <tr>
-                        {% for patient in patients %}
-                        <td>
-                            <div class="tab">
-                                <form method="post" action="/pag">
-                                    <input type="submit" name="check_record" value={{patient._id}}>
-                                </form>
-                            </div>
-                        </td>
-                        <td>{{ patient.username }}</td>
-                    </tr><br>
-                    {% endfor %}
-                </table>
-            </center>
-        </nav>
-    </body>
 </div>
 {% endblock %}
 {% block content %}
