@@ -63,7 +63,7 @@
 }
 
 .extra_info {
-    color: rgba(70, 67, 67, 0.667);
+    color: rgba(34, 32, 32, 0.667);
     background-color: rgb(137, 142, 145);
 }
 
@@ -125,5 +125,5 @@ table,
 th,
 td {
     border: 1px solid;
-    color: rgba(70, 67, 67, 0.667);
+    color: rgba(34, 32, 32, 0.667);
 }
