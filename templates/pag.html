@@ -67,10 +67,10 @@ Private and Confidential. Internal Use Only.
     </div>
     <div class="extra_info">
         <center>
+            {% if patient_info is not none %}
             <br>
             PATIENT ID: {{ patient_info["_id"] }}
             <br>
-            {% if patient_info is not none %}
             <table style='text-align: center'>
                 <tr>
                     <th>Age</th>
