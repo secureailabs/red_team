@@ -30,16 +30,11 @@ Private and Confidential. Internal Use Only.
 
         <div class="slogan">
             {% block slogan %}
-            <h4>Here's how {{ team_name }} works!</h4>
-            <p>
-            <ol>
-                <li>Talk through your symptoms</li>
-                <li>Get Feedback on your symptoms</li>
-                <li>Choose the best care option for you</li>
-                <li>Matched clinical trials</li>
-                <li>Provide reference materials based off your concerns</li>
-            </ol>
-            </p>
+            <center>
+                <a href="http://127.0.0.1:5000">
+                    <image src="{{ url_for('static', filename='images/logo.png')}}"></image>
+                </a>
+            </center>
             {% endblock %}
         </div>
         <div class="banner">
@@ -73,7 +68,16 @@ Private and Confidential. Internal Use Only.
         </div>
         <div class="content">
             {% block content %}
-            <center>CONTENT</center>
+            <h4 style="margin-left: 2vh;">Here's how {{ team_name }} works!</h4>
+            <p>
+            <ol style="margin-left: 2vh;">
+                <li>Talk through your symptoms</li>
+                <li>Get Feedback on your symptoms</li>
+                <li>Choose the best care option for you</li>
+                <li>Matched clinical trials</li>
+                <li>Provide reference materials based off your concerns</li>
+            </ol>
+            </p>
             {% endblock %}
         </div>
     </div>

@@ -16,9 +16,9 @@
 .grid {
     display: grid;
     height: 100vh;
-    grid-template-columns: 25vh 1fr;
+    grid-template-columns: 30vh 1fr;
     grid-template-rows: 1fr 1fr;
-    grid-gap: 2px;
+    /* grid-gap: 2px; */
     grid-template-areas:
         "slogan banner"
         "sidebar content";
@@ -27,23 +27,24 @@
 
 .slogan {
     color: rgba(221, 17, 17, 0.667);
-    background-color: rgb(247, 137, 117);
+    background-color: rgb(194, 202, 206);
 }
 
 .banner {
     color: rgba(221, 17, 17, 0.667);
     background-color: rgb(194, 202, 206);
+    /* background-color: rgb(194, 202, 206); */
 }
 
 .sidebar {
     color: rgb(194, 202, 206);
-    background-color: rgb(221, 17, 17, 0.667);
+    background-color: rgb(247, 137, 117);
     height: 100vh;
 }
 
 .content {
     color: rgba(221, 17, 17, 0.667);
-    background-color: rgb(194, 202, 206);
+    background-color: rgb(159, 174, 182);
     height: 100vh;
 }
 

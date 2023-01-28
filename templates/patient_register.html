@@ -5,8 +5,10 @@
 {% block content %}
 
 <body>
-    Please fill in the following to create a patient profile.
-    <form method="post" action='/register/patient'>
+    <div style="margin-left: 2vh;">
+        <h4>Please fill in the following to create a patient profile.</h4>
+    </div>
+    <form method="post" action="/register/patient" style="margin-left: 2vh;">
         <label>Username:<input type="text" name="username" value=""></label></br>
         <label>Password:<input type="password" name="password" value=""></label></br>
         <label>Email:<input type="email" name="email" value=""></label></br>
