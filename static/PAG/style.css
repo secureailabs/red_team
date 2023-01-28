@@ -15,7 +15,7 @@
 
 .grid {
     display: grid;
-    height: 100vh;
+    height: 110vh;
     grid-template-columns: 30vh 1fr;
     grid-template-rows: 1fr 1fr;
     /* grid-gap: 2px; */
@@ -31,20 +31,25 @@
 }
 
 .banner {
+    margin-top: -1vh;
     color: rgba(221, 17, 17, 0.667);
-    background-color: rgb(194, 202, 206);
     /* background-color: rgb(194, 202, 206); */
+    /* background-color: rgb(194, 202, 206); */
+    background-color: rgb(159, 174, 182);
 }
 
 .sidebar {
-    color: rgba(209, 215, 250, 0.952);
-    background-color: rgb(159, 174, 182);
+    /* color: rgba(209, 215, 250, 0.952); */
+    color: rgb(247, 137, 117);
+    /* background-color: rgb(159, 174, 182); */
+    background-color: rgb(194, 202, 206);
     height: 100vh;
 }
 
 .content {
     color: rgba(221, 17, 17, 0.667);
-    background-color: rgb(194, 202, 206);
+    /* background-color: rgb(194, 202, 206); */
+    background-color: rgb(159, 174, 182);
     height: 100vh;
 }
 
@@ -70,14 +75,15 @@
 }
 
 .summary {
-    color: rgba(70, 67, 67, 0.667);
-    background-color: rgb(194, 202, 206);
+    color: rgba(34, 32, 32, 0.667);
+    /* background-color: rgb(194, 202, 206); */
+    background-color: rgb(159, 174, 182);
     align-items: left;
     grid-column-end: span 2;
 }
 
 body {
-    color: rgba(70, 67, 67, 0.667);
+    color: rgba(34, 32, 32, 0.667);
     background-color: rgb(194, 202, 206);
 }
 
