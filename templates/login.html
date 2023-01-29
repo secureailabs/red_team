@@ -5,11 +5,17 @@
 {% block content %}
 
 <body>
-    <form method="post" action="/login">
-        <label>Username: <input type="username" name="username" value=""></label><br>
-        <label>Password: <input type="password" name="password" value=""></label><br>
-        <br />
-        <input type="submit" name="submit" value="Login">
+    <div style="margin-left: 2vh;">
+        <h4>Please enter your credentials to login.</h4>
+    </div>
+    <form method="post" action="/login" style="margin-left: 2vh;">
+
+        <label for="username">Username: </label><br>
+        <input type="text" id="username" name="username" value=""><br>
+        <label for="password">Password: </label><br>
+        <input type="password" id="password" name="password" value=""><br>
+        <br>
+        <input type="submit" name="submit" value="Login" style="width:10vh">
     </form>
 
     {% if error %}

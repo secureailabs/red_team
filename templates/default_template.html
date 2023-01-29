@@ -20,7 +20,7 @@ Private and Confidential. Internal Use Only.
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEFAULT_TEMPLATE</title>
+    <title>RED</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='PAG/style.css')}}">
 </head>
 
@@ -30,19 +30,14 @@ Private and Confidential. Internal Use Only.
 
         <div class="slogan">
             {% block slogan %}
-            <h4>Here's how {{ team_name }} works!</h4>
-            <p>
-            <ol>
-                <li>Talk through your symptoms</li>
-                <li>Get Feedback on your symptoms</li>
-                <li>Choose the best care option for you</li>
-                <li>Matched clinical trials</li>
-                <li>Provide reference materials based off your concerns</li>
-            </ol>
-            </p>
+            <center>
+                <a href="http://127.0.0.1:5000">
+                    <image src="{{ url_for('static', filename='images/logo.png')}}"></image>
+                </a>
+            </center>
             {% endblock %}
         </div>
-        <div class="banner">
+        <div class="banner" style="height:100%">
             {% block banner %}
             <h1>
                 <center><a href="http://127.0.0.1:5000"> {{ team_name }}</a></center>
@@ -57,13 +52,13 @@ Private and Confidential. Internal Use Only.
             <center>
                 <br>
                 <form method="post" , action="/register">
-                    <input type="submit" name="choice" value="Register New User"><br>
+                    <input type="submit" name="choice" value="Register New User" style="height:5vh; width:30vh"><br>
                 </form><br />
                 <form method="post" , action="/">
-                    <input type="submit" name="choice" value="PAG Portal"><br>
+                    <input type="submit" name="choice" value="PAG Portal" style="height:5vh; width:30vh"><br>
                 </form><br />
                 <form method="post" , action="/">
-                    <input type="submit" name="choice" value="Patient Portal"><br>
+                    <input type="submit" name="choice" value="Patient Portal" style="height:5vh; width:30vh"><br>
                 </form><br />
                 {% if error %}
                 <p>{{error}}</p>
@@ -73,7 +68,16 @@ Private and Confidential. Internal Use Only.
         </div>
         <div class="content">
             {% block content %}
-            <center>CONTENT</center>
+            <h4 style="margin-left: 2vh;">Here's how {{ team_name }} works!</h4>
+            <p>
+            <ol style="margin-left: 2vh;">
+                <li>Talk through your symptoms</li>
+                <li>Get Feedback on your symptoms</li>
+                <li>Choose the best care option for you</li>
+                <li>Matched clinical trials</li>
+                <li>Provide reference materials based off your concerns</li>
+            </ol>
+            </p>
             {% endblock %}
         </div>
     </div>

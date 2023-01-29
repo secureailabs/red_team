@@ -1,40 +1,40 @@
 <!--
- red_team
- pag.html
- 
- Copyright (C) 2023 Secure Ai Labs, Inc. All Rights Reserved.
- Private and Confidential. Internal Use Only.
- 
-     This software contains proprietary information which shall not
-     be reproduced or transferred to other documents and shall not
-     be disclosed to others for any purpose without
-     prior written permission of Secure Ai Labs, Inc.
- 
- 
+red_team
+pag.html
+
+Copyright (C) 2023 Secure Ai Labs, Inc. All Rights Reserved.
+Private and Confidential. Internal Use Only.
+
+    This software contains proprietary information which shall not
+    be reproduced or transferred to other documents and shall not
+    be disclosed to others for any purpose without
+    prior written permission of Secure Ai Labs, Inc.
+
+
 -->
 {% extends "default_template.html" %}
 {% block sidebar %}
 <div>
     <center>
-        <h2>Patient records</h2>
-    </center>
-
-    <body>
-        <nav>
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                </tr>
+        <h2>Patient List</h2>
+        <table style="width: 90%; text-align: center">
+            <tr>
+                <th>ID</th>
+            </tr>
+            <tr>
                 {% for patient in patients %}
-                <tr>
-                    <td>{{ patient._id }}</td>
-                    <td>{{ patient.username }}</td>
-                </tr><br>
-                {% endfor %}
-            </table>
-        </nav>
-    </body>
+                <td>
+                    <div class="tab">
+                        <form method="post" action="/pag">
+                            <input style="width: 100%;" type="submit" name="check_record" value={{patient._id}}>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            <br>
+        </table>
+    </center>
 </div>
 {% endblock %}
 {% block content %}
@@ -66,29 +66,83 @@
                 <i class="fas fa-arrow-right"></i>
             </a>
         </div>
+        <center>
+            {% if patient_info is not none %}
+            <br>
+            PATIENT ID: {{ patient_info["_id"] }}
+            <br>
+            <table style="width: 100%; text-align: center">
+                <tr>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>BloodType</th>
+                    <th>Records</th>
+                </tr>
+                <tr>
+                    <td>
+                        {{ patient_info["age"] }}
+                    </td>
+                    <td>
+                        {{ patient_info["gender"] }}
+                    </td>
+                    <td>
+                        {{ patient_info["height"] }}
+                    </td>
+                    <td>
+                        {{ patient_info["weight"] }}
+                    </td>
+                    <td>
+                        {{ patient_info["bloodtype"] }}
+                    </td>
+                    <td>
+                        {{ patient_info["records"] }}
+                    </td>
+                </tr><br>
+            </table>
+            {% endif %}
+        </center>
+
     </div>
     <div class="summary">
-        <br>
-        SUMMARY OF INFORMATION
-        <p>
+        <center>
+            <br>
+            SUMMARY OF INFORMATION
+            <br>
+            <table style="width: 100%; text-align: justify">
+                <tr>
+                    <th>Call Length</th>
+                    <th>Top Reported Symptoms</th>
+                    <th>Top Keywords</th>
+                    <th>Most Common Questions</th>
+                </tr>
+                <tr>
+                    <td>
+                        Average call length : 999
+                    </td>
+                    <td>
+                        <ol type="1">
+                            <li>headache</li>
+                            <li>fever</li>
+                            <li>cough</li>
+                        </ol>
+                    </td>
+                    <td>
+                        <ol type="1">
+                            <li>death</li>
+                            <li>cough</li>
+                        </ol>
+                    </td>
+                    <td>
+                        <ol type="1">
+                            <li>Will I die?</li>
+                        </ol>
+                    </td>
+                </tr><br>
+            </table>
+        </center>
 
-            <body>
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Records</th>
-                    </tr>
-                    {% for patient in patients %}
-                    <tr>
-                        <td>{{ patient._id }}</td>
-                        <td>{{ patient.username }}</td>
-                        <td>{{ patient.records }}</td>
-                    </tr><br>
-                    {% endfor %}
-                </table>
-            </body>
-        </p>
 
     </div>
 

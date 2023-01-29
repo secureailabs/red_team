@@ -1,36 +1,38 @@
 <!--
- red_team
- patient.html
- 
- Copyright (C) 2023 Secure Ai Labs, Inc. All Rights Reserved.
- Private and Confidential. Internal Use Only.
- 
-     This software contains proprietary information which shall not
-     be reproduced or transferred to other documents and shall not
-     be disclosed to others for any purpose without
-     prior written permission of Secure Ai Labs, Inc.
- 
- 
+red_team
+patient.html
+
+Copyright (C) 2023 Secure Ai Labs, Inc. All Rights Reserved.
+Private and Confidential. Internal Use Only.
+
+    This software contains proprietary information which shall not
+    be reproduced or transferred to other documents and shall not
+    be disclosed to others for any purpose without
+    prior written permission of Secure Ai Labs, Inc.
+
+
 -->
 
 {% extends "default_template.html" %}
 {% block sidebar %}
 <div>
     <nav>
+        <br>
         <center>
+            <form method="post" , action="/patient">
+                <input type="submit" name="consult" value="Start a consult" style="height:4vh; width:28vh">
+            </form>
             <h2>Consulting records</h2>
         </center>
         <form method="post" , action="/patient">
             {% for i in records %}
-            <input type="submit" name="check_record" value="{{i}}">
+            <center>
+                <input type="submit" name="check_record" value="{{i}}" style="width:28vh">
+            </center>
             {% endfor %}
         </form>
     </nav>
-    <center>
-        <form method="post" , action="/patient">
-            <input type="submit" name="consult" value="Start a consult">
-        </form>
-    </center>
+
 </div>
 
 {% if error %}
@@ -43,11 +45,11 @@
     <div class="user_info">
 
         <body>
-            <header>
+            <header style="margin-left: 1vh;">
                 <h2> Patient {{patient.username}}</h2>
             </header>
 
-            <div>
+            <div style="margin-left: 1vh;">
                 <h3><u>Basic Patient Information</u></h3>
                 <h4> {{patient["firstname"]}} {{patient["lastname"]}} </h4>
                 <ul>
@@ -74,13 +76,13 @@
             {% if detail is not none %}
             <div class="tab">
                 <form method="post" action="/patient">
-                    <input class="tabbutton" type="submit" name="symptomstab" value="symptoms">
-                    <input class="tabbutton" type="submit" name="diagnosistab" value="diagnosis">
-                    <input class="tabbutton" type="submit" name="suggestionstab" value="suggestions">
-                    <input class="tabbutton" type="submit" name="referencestab" value="references">
+                    <input class="tabbutton" type="submit" name="symptomstab" value="Symptoms" style="width:28vh">
+                    <input class="tabbutton" type="submit" name="diagnosistab" value="Diagnosis" style="width:28vh">
+                    <input class="tabbutton" type="submit" name="suggestionstab" value="Suggestions" style="width:28vh">
+                    <input class="tabbutton" type="submit" name="referencestab" value="References" style="width:28vh">
             </div>
             {% if show["symptoms"] %}
-            <div id="symptoms" class="tabcontent">
+            <div id="symptoms" class="tabcontent" style="margin-left: 2vh;">
                 <ul>
                     {% for symptom in detail["symptoms"] %}
                     <li>{{symptom}}</li>
@@ -89,8 +91,8 @@
             </div>
             {% endif %}
             {% if show["diagnosis"] %}
-            <div id="disgnosis" class="tabcontent">
-                <table>
+            <div id="diagnosis" class="tabcontent" style="margin-left: 1vh;">
+                <table style="width: 100%; text-align: center">
                     <tr>
                         <th>Disease</th>
                         <th>Prevalence</th>
@@ -109,18 +111,20 @@
             </div>
             {% endif %}
             {% if show["suggestions"] %}
-            <div id="suggestions" class="tabcontent">
+            <div id="suggestions" class="tabcontent" style="margin-left: 2vh;">
                 {% for key, value in detail["suggestions"].items() %}
                 <h5>{{key}}</h5>
-                <p>{{value}}</p>
+                {{value}}
                 {% endfor %}
             </div>
             {% endif %}
             {% if show["references"] %}
-            <div id="references" class="tabcontent">
-                <a href="https://www.google.com">Google</a><br>
-                <a href="https://www.wikipedia.org">wikipedia</a><br>
-                <a href="https://pubmed.ncbi.nlm.nih.gov">Pubmed</a><br>
+            <div id="references" class="tabcontent" style="margin-left: 2vh; color: rgb(245, 108, 108);"><br>
+                <ol>
+                    <li><a href="https://www.google.com" style="color: rgb(245, 108, 108);">Google</a></li><br>
+                    <li><a href="https://www.wikipedia.org" style="color: rgb(245, 108, 108);">wikipedia</a></li><br>
+                    <li><a href="https://pubmed.ncbi.nlm.nih.gov" style="color: rgb(245, 108, 108);">Pubmed</a></li><br>
+                </ol>
             </div>
             {% endif %}
             {% endif %}

@@ -5,20 +5,25 @@
 {% endblock %}
 {% block content %}
 
+
 <body>
-    Please fill in the following to create a PAG profile.
-
-    <body>
+    <div style="margin-left: 2vh;">
+        <h4>Please fill in the following to create a PAG profile.</h4>
+    </div>
+    <div style="margin-left: 2vh;">
         <form method="post" action='/register/pag'>
-            <label>Username:<input type="text" name="username" value=""></label></br>
-            <label>Password:<input type="password" name="password" value=""></label></br>
-            <label>Email:<input type="email" name="email" value=""></label></br>
-            <label>Disease Focus:<input type="disease" name="disease" value=""></label></br>
-            <input type="submit" value="Register">
+            <input style="width: 300px;" placeholder="Specify user name?" type="text" name="username" value=""><br></br>
+            <input style="width: 300px;" placeholder="Specify a password." type="password" name="password"
+                value=""><br></br>
+            <input style="width: 300px;" placeholder="What is your email?" type="email" name="email" value=""><br></br>
+            <input style="width: 300px;" placeholder="Specify a disease focus!" type="text" name="disease"
+                value=""><br></br>
+            <input type="submit" value="Register" style="width:10vh">
         </form>
+    </div>
+    {% if error %}
+    <p>{{error}}</p>
+    {% endif %}
 
-        {% if error %}
-        <p>{{error}}</p>
-        {% endif %}
-    </body>
-    {% endblock %}
+</body>
+{% endblock %}

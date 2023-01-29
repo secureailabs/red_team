@@ -27,14 +27,14 @@ def login():
         user = db.user.find_one({"username": username})
         error = None
 
-        print(user, flush=True)
-        user.pop("_id")
         if user is None:
             error = "Incorrect username"
         elif not check_password_hash(user["password"], password):
             error = "Incorrect password"
 
         if error is None:
+            print(user, flush=True)
+            user.pop("_id")
             if user["role"] == "pag":
                 pag_info = json.dumps(user)
                 return redirect(url_for("pag_bp.pag_info", messages=pag_info))

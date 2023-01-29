@@ -4,7 +4,7 @@
 <br>
 <center>
     <form method="post" , action="/patient">
-        <input type="submit" name="return" value="Dashboard">
+        <input type="submit" name="return" value="Dashboard" style="height:5vh; width:30vh">
     </form>
 </center>
 <br />
@@ -12,18 +12,14 @@
 {% block content %}
 
 <body>
-    <h2>Consulting center</h2>
-    <!-- <div>
-        Please input your symptoms in English<br>
-        Examples: headache, fever
-    </div> -->
-
-    <div>
+    <h2 style="margin-left: 1vh;">Consulting center</h2>
+    <div style="margin-left: 1vh;">
         {% if content %}
         <h4>{{content["text"]}}</h4>
         <form method="post" , action="/patient/consult">
             {% if content["type"]=="text" %}
-            <input type="text" , name="symptoms" , value="symptoms"><br>
+            <textarea rows="6" style="width: 400px" name="symptoms" id="symptoms"
+                placeholder="Specify your symptoms...&#10;Example: I have a fever and a headache"></textarea><br><br>
             {% elif content["type"]=="single" %}
             <input type="radio" , name="single" , value="{{'present_'+content['items'][0]['id']}}">
             <label for="single">Yes</label><br>
@@ -42,7 +38,7 @@
             <label for="{{choice['id']}}">{{choice["name"]}}</label><br>
             {% endfor %}
             {% endif %}
-            <input class="request" type="submit" name="submit" value="submit">
+            <input class="request" type="submit" name="submit" value="Submit">
         </form>
         {% else %}
         <h4>Your diagnosis</h4>
