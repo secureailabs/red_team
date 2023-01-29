@@ -181,9 +181,9 @@ def get_patient_symptom_graph(df, state=None):
 def fill_layout(app, data):
     app.layout = html.Div(
         children=[
-            html.H4(children="Altzheimer's disease statistics based on aggreagated patient diagnosis"),
             html.Div(
                 children=[
+                    html.H4(children="Altzheimer's disease statistics based on aggreagated patient diagnosis"),
                     dcc.RangeSlider(
                         id="year-slider",
                         min=2013,
@@ -213,16 +213,20 @@ def fill_layout(app, data):
                         value=["male", "female"],
                     ),
                     html.Br(),
-                ]
-            ),
-            html.Div(
-                children=[
-                    html.P("Heat map of number of Altzheimer cases reported as primary diagnosis in US"),
-                    dcc.Graph(
-                        id="us-choropleth",
-                        figure=get_map(data),
+                    html.Div(
+                        children=[
+                            html.P("Heat map of number of Altzheimer cases reported as primary diagnosis in US"),
+                            dcc.Graph(
+                                id="us-choropleth",
+                                figure=get_map(data),
+                            ),
+                        ]
                     ),
-                ]
+                ],
+                style={
+                    "float": "left",
+                    "width": "50%",
+                },
             ),
             html.Div(
                 children=[
@@ -243,9 +247,17 @@ def fill_layout(app, data):
                             layout=dict(paper_bgcolor="#F4F4F8", plot_bgcolor="#F4F4F8", height=700),
                         ),
                     ),
-                ]
+                ],
+                style={
+                    "float": "left",
+                    "width": "50%",
+                },
             ),
-        ]
+        ],
+        style={
+            "display": "flex",
+            "flex-direction": "row",
+        },
     )
     return app
 
@@ -276,10 +288,11 @@ def init_callbacks(app):
         Output("selected-data", "figure"),
         [
             Input("chart-dropdown", "value"),
-            Input("us-choropleth", "selected"),
+            Input("us-choropleth", "clickData"),
         ],
     )
     def load_figure(chart_name, state):
+        print(state)
         if chart_name == "age_histogram":
             return get_age_histogram(PATIENT_DF, state)
         elif chart_name == "year_case_number":
