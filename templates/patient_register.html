@@ -21,16 +21,27 @@
         <br></br>
         <input style="width: 300px;" placeholder="Specify your address." type="address" name="address" value="">
         <br></br>
-        <input style="width: 300px;" placeholder="What is your age?" type="age" name="age" value="">
+        <input style="width: 300px;" placeholder="What is your age?" type="number" name="age" min="21" value="">
         <br></br>
-        <input style="width: 300px;" placeholder="Gender: (male | female)" type="gender" name="gender" value="">
+        <input style="width: 300px;" placeholder="Specify Gender: (male | female)" type="text" list="gender"
+            name="gender" />
+        <datalist id="gender">
+            <option>male</option>
+            <option>female</option>
+        </datalist>
         <br></br>
-        <input style="width: 300px;" placeholder="Specify your height in cm." type="height" name="height" value="">
+        <input style="width: 300px;" placeholder="Specify your height in cm." type="number" name="height" value="">
         <br></br>
-        <input style="width: 300px;" placeholder="Specify your weight in kg." type="weight" name="weight" value="">
+        <input style="width: 300px;" placeholder="Specify your weight in kg." type="number" name="weight" value="">
         <br></br>
-        <input style="width: 300px;" placeholder="Blood type: ( A | B | AB | O )" type="bloodtype" name="bloodtype"
-            value="">
+        <input style="width: 300px;" placeholder="Blood type: ( A | B | AB | O )" type="text" list="bloodtype"
+            name="bloodtype" />
+        <datalist id="bloodtype">
+            <option>A</option>
+            <option>B</option>
+            <option>AB</option>
+            <option>O</option>
+        </datalist>
         <br></br>
         <input type="submit" value="Register" style="width:10vh">
     </form>

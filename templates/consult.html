@@ -18,7 +18,8 @@
         <h4>{{content["text"]}}</h4>
         <form method="post" , action="/patient/consult">
             {% if content["type"]=="text" %}
-            <input type="text" style="width: 400px" placeholder="Specify your symptoms" name="symptoms"><br><br>
+            <textarea rows="6" style="width: 400px" name="symptoms" id="symptoms"
+                placeholder="Specify your symptoms...&#10;Example: I have a fever and a headache"></textarea><br><br>
             {% elif content["type"]=="single" %}
             <input type="radio" , name="single" , value="{{'present_'+content['items'][0]['id']}}">
             <label for="single">Yes</label><br>
