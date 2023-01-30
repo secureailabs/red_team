@@ -99,18 +99,15 @@ Private and Confidential. Internal Use Only.
 
                         <center>
                             <table style="width: 100%; text-align: center">
-                                <tr>
-                                    <th>
-                                        <label for="records">Choose a patient record: </label>
-                                        <select name="records" id="records"
-                                            style="background-color: rgb(194, 202, 206);">
-                                            {% for i in patient_info["records"] %}
-                                            <option value="{{i}}" style="width:30vh"> {{i}} </option>
-                                            {% endfor %}
-                                        </select>
-                                    </th>
-                                    <th><input type="submit" value="Download Record" style="width:15vh"></th>
-                                </tr>
+                                <form method="POST" action="/pag">
+                                    <input type="hidden" name="get_record" value="get_record">
+                                    <select name="get_record">
+                                        {% for i in patient_info["records"] %}
+                                        <option value="{{i}}" style="width:30vh; height:5vh;"> {{i}}</option>
+                                        {% endfor %}
+                                    </select> &nbsp;
+                                    <input type="submit" value="Get Record"></input>
+                                </form>
                             </table>
 
                             <!-- <input type="submit" name="check_record" value="{{i}}" style="width:28vh"> -->
@@ -161,6 +158,35 @@ Private and Confidential. Internal Use Only.
                 </tr><br>
             </table><br>
         </center>
+        {% if patient_consult %}
+        <h2>Consult Information : {{ patient_consult.id }} </h2><br>
+        <h3>Patient symptoms</h3><br>
+        <ul>
+            {% for symptom in patient_consult.symptoms %}
+            <li>{{symptom}}</li>
+            {% endfor %}
+        </ul><br>
+
+        <h3>Diagnosis</h3><br>
+        <table style="width: 100%; text-align: center">
+            <tr>
+                <th>Disease</th>
+                <th>Prevalence</th>
+                <th>Severity</th>
+                <th>Probability</th>
+            </tr>
+            {% for condition in patient_consult.conditions %}
+            <tr>
+                <td>{{condition["name"]}}</td>
+                <td>{{condition["prevalence"]}}</td>
+                <td>{{condition["severity"]}}</td>
+                <td>{{condition["probability"]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        {% endif %}
+
     </div>
 
     {% endblock %}

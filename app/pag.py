@@ -37,6 +37,12 @@ def get_patient_info(patient_id):
     return patient_info
 
 
+def get_patient_consult(consult_id):
+    print(f"this is the record id: {consult_id}")
+    consult_info = db.record.find_one({"id": consult_id})
+    return consult_info
+
+
 class PagView(MethodView):
     init_every_request = False
 
@@ -68,6 +74,19 @@ class PagView(MethodView):
                 pag=self.pag_info,
                 patients=get_list_patients(),
                 patient_info=patient_info,
+                patient_consult=None,
+                team_name="Team Red",
+            )
+        if "get_record" in request.form:
+            consult_id = request.form["get_record"]
+            consult_info = get_patient_consult(consult_id)
+
+            return render_template(
+                "pag.html",
+                pag=self.pag_info,
+                patients=get_list_patients(),
+                patient_info=None,
+                patient_consult=consult_info,
                 team_name="Team Red",
             )
 
