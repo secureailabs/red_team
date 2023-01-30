@@ -57,6 +57,8 @@ def get_map(data):
 
 
 def get_age_histogram(df, state=None):
+    print(state)
+    print(df)
     if state is not None:
         df = df[df["state"] == state]
 
@@ -292,7 +294,7 @@ def init_callbacks(app):
         ],
     )
     def load_figure(chart_name, state):
-        print(state)
+        state = state["points"][0]["location"]
         if chart_name == "age_histogram":
             return get_age_histogram(PATIENT_DF, state)
         elif chart_name == "year_case_number":
