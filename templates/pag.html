@@ -159,7 +159,8 @@ Private and Confidential. Internal Use Only.
             </table><br>
         </center>
         {% if patient_consult %}
-        <h2>Consult Information : {{ patient_consult.id }} </h2><br>
+        <h2>Consult Information</h2>
+        <h4>Consult ID: {{ patient_consult.id }} </h4>
         <h3>Patient symptoms</h3>
         <ul>
             {% for symptom in patient_consult.symptoms %}
