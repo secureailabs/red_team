@@ -71,7 +71,7 @@ def faq():
         print(faqs, sep='; ', file=f)
     return
 
-file_names = ["questions", "raw_keywords", "symptoms", "verbs", "names", "orgs", "dates"]
+file_names = ["questions", "raw_keywords", "symptoms", "verbs", "names", "orgs"]
 word_wall_names = ["raw_keywords", "symptoms", "verbs", "names", "orgs"]
 
 
