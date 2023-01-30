@@ -15,7 +15,7 @@ def read_csv(file_name):
 
 def aggregate_files(file_name):
     list = read_csv("patient_1/"+file_name+".txt") + read_csv("patient_2/"+file_name+".txt")
-    with open("agg_"+file_name+".txt", 'w') as f:
+    with open("aggregate/"+file_name+".txt", 'w') as f:
         print(*list, sep=";", file=f)
 
 
@@ -47,11 +47,11 @@ def wordwall(file_name):
     plt.axis("off")
     plt.tight_layout(pad = 0)
     
-    plt.savefig(file_name+".png")
+    plt.savefig("images/"+file_name+".png")
 
 def faq():
     scores = []
-    questions = read_csv("agg_questions.txt")
+    questions = read_csv("aggregate/questions.txt")
     nlp = spacy.load("en_core_web_lg")
     for question_1 in questions:
         q1 = nlp(question_1)
@@ -66,8 +66,8 @@ def faq():
         faqs.append([score, question])
 
     faqs = sorted(faqs, key=lambda x: x[0], reverse=True)
-    
-    with open('agg_faqs.txt', 'w') as f:
+
+    with open('aggregate/faqs.txt', 'w') as f:
         print(faqs, sep='; ', file=f)
     return
 
@@ -75,11 +75,11 @@ file_names = ["questions", "raw_keywords", "symptoms", "verbs", "names", "orgs",
 word_wall_names = ["raw_keywords", "symptoms", "verbs", "names", "orgs"]
 
 
-# for name in file_names:
-#     aggregate_files(name)
+for name in file_names:
+    aggregate_files(name)
 
-# for name in word_wall_names:
-#     wordwall(name)
+for name in word_wall_names:
+    wordwall(name)
 
 faq()
 
