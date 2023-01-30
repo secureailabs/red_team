@@ -1,1 +1,1 @@
-['flu', 'fever', 'ibuprofen', 'paracetamol', 'inflammation']
+flu; fever; ibuprofen; paracetamol; inflammation

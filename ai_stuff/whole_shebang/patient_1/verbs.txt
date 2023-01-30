@@ -1,1 +1,1 @@
-['help', 'have', 'need', 'cope', 'hear', 'tell', 'sound', 'experience', 'take', 'keep', 'drink', 'continue', 'reduce', 'go', 'enter', 'infect', 'last']
+help; have; need; cope; hear; tell; sound; experience; take; keep; drink; continue; reduce; go; enter; infect; last
