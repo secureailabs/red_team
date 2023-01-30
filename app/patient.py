@@ -77,6 +77,7 @@ class PatientView(MethodView):
         elif "suggestionstab" in request.form:
             show["suggestions"] = True
         elif "referencestab" in request.form:
+            print(self.current_record["references"][0])
             show["references"] = True
 
         return render_template(
@@ -123,11 +124,13 @@ class ConsultView(MethodView):
             print(conditions)
             suggestions = self.consult.get_suggestions()
             print(suggestions)
+            references = self.consult.get_references()
             consult_record = {
                 "id": self.id,
                 "symptoms": symptoms,
                 "conditions": conditions,
                 "suggestions": suggestions,
+                "references": references,
             }
             db.record.insert_one(consult_record)
             db.user.find_one_and_update({"username": self.username}, {"$push": {"records": self.id}})

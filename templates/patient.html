@@ -120,11 +120,20 @@ Private and Confidential. Internal Use Only.
             {% endif %}
             {% if show["references"] %}
             <div id="references" class="tabcontent" style="margin-left: 2vh; color: rgb(245, 108, 108);"><br>
-                <ol>
-                    <li><a href="https://www.google.com" style="color: rgb(245, 108, 108);">Google</a></li><br>
-                    <li><a href="https://www.wikipedia.org" style="color: rgb(245, 108, 108);">wikipedia</a></li><br>
-                    <li><a href="https://pubmed.ncbi.nlm.nih.gov" style="color: rgb(245, 108, 108);">Pubmed</a></li><br>
-                </ol>
+                {% for entry in detail["references"] %}
+                <div>
+                    <div>
+                        {% if "elocationid" in entry %}
+                        <a href="{{'https://www.doi.org/'+ entry['elocationid']}}">{{entry["sorttitle"]}}</a>
+                        {% else %}
+                        {{entry["sorttitle"]}}
+                        {% endif %}
+                    </div>
+                    <div>{{entry["fulljournalname"]}}</div>>
+                    <div>{{entry["epubdate"]}}</div>
+                    <br>
+                </div>
+                {% endfor %}
             </div>
             {% endif %}
             {% endif %}

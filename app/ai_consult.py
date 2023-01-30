@@ -1,5 +1,10 @@
+import time
+import xml.etree.ElementTree as ET
+from urllib.parse import quote
+
 import infermedica_api
 import openai
+import requests
 
 id = "3fac8098"
 key = "a3aac776cb9346d6e06933aad49e87e1"
@@ -84,3 +89,30 @@ class Interview:
             response = openai.Completion.create(engine="text-davinci-003", prompt=question, max_tokens=500)
             info[condition_name] = response.to_dict_recursive()["choices"][0]["text"]
         return info
+
+    def get_references(
+        self,
+    ):
+        condition = self.state["conditions"][0]["name"]
+        pubmed_endpoint = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
+        query_str = "?db=pubmed&term=" + quote(condition)
+        response = requests.get(pubmed_endpoint + query_str)
+        root = ET.fromstring(response.text)
+        idlist = []
+        for elem in root.iter("Id"):
+            id = elem.text
+            idlist.append(id)
+        pubmed_endpoint = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
+        reference_list = []
+        for id in idlist:
+            query_str = "?db=pubmed&id=" + id + "&retmode=json"
+            response = requests.get(pubmed_endpoint + query_str)
+            response = response.json()
+            article_info = response["result"][id]
+            if article_info["elocationid"] == "":
+                article_info.pop("elocationid")
+            else:
+                article_info["elocationid"] = article_info["elocationid"][5:]
+            reference_list.append(article_info)
+            time.sleep(1)
+        return reference_list
