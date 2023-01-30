@@ -14,6 +14,13 @@ pip install git+https://github.com/openai/whisper.git
 
 # Install keybert for keyword extraction
 pip install keybert
+
+# Install Spacy for NLP using
+pip install spacy
+
+# Install wordcloud for word wall genertion
+
+pip install wordcloud
 ```
 
 # Run the project

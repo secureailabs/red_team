@@ -1,0 +1,1 @@
+[[5.224807524123612, ' I see, is that a private GP?'], [5.164787744960877, 'Yes, will I die?'], [5.050955574163224, " What should I do if I'm sick for longer than five days?"], [4.852277294248008, ' Can I go into public places?'], [4.761524264819891, 'Yes, is this fatal?'], [4.6829091368903155, ' How long will this last for?'], [4.634997677485385, ' Where is my local GP?']]

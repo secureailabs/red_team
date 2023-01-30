@@ -1,6 +1,6 @@
 PAG: Hello, how may I help today?
 
-Caller: I'm not sure what's wrong with me but I'm feeling unwell.
+Caller: I'm not sure what's wrong with me but I'm feeling unwell and so is my brother David.
 
 PAG: I'm sorry to hear that. Can you tell me your symptoms?
 
@@ -24,6 +24,14 @@ Caller: What should I do if I'm sick for longer than 5 days?
 
 PAG: You should book an appointment with your GP.
 
-Caller: Thanks, for your help.
+Caller: Where is my local GP?
+
+PAG: Greyfriars Hospital. Ask for Doctor MacDougal.
+
+Caller: I see, is that a private GP
+
+PAG: Yes, it is owned by Apple and Microsoft. Are there any further questions?
+
+Caller: Thanks for your help, tthat's everything.
 
 PAG: You're welcome, goodbye.
