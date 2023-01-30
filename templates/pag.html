@@ -59,14 +59,13 @@ Private and Confidential. Internal Use Only.
     </div>
     <div class="extra_info">
         <br>
-        <h3>EXTRA INFORMATION</h3>
-        <div>
-            <h4><a href="/pag/dashboard" class="dash-link" style="color:rgb(175, 18, 49)">
-                    <span>Go to dashboard</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a></h4>
-        </div>
         <center>
+            <h3><a href="/pag/dashboard" class="dash-link" style="color: rgba(209, 215, 250, 0.952);">
+                    <span>MY PAG DASHBOARD</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </h3>
+            <hr color="RGB(194, 202, 206)" size="1">
             {% if patient_info is not none %}
             <br>
             PATIENT ID: {{ patient_info["_id"] }}
@@ -97,7 +96,26 @@ Private and Confidential. Internal Use Only.
                         {{ patient_info["bloodtype"] }}
                     </td>
                     <td>
-                        {{ patient_info["records"] }}
+
+                        <center>
+                            <table style="width: 100%; text-align: center">
+                                <tr>
+                                    <th>
+                                        <label for="records">Choose a patient record: </label>
+                                        <select name="records" id="records"
+                                            style="background-color: rgb(194, 202, 206);">
+                                            {% for i in patient_info["records"] %}
+                                            <option value="{{i}}" style="width:30vh"> {{i}} </option>
+                                            {% endfor %}
+                                        </select>
+                                    </th>
+                                    <th><input type="submit" value="Download Record" style="width:15vh"></th>
+                                </tr>
+                            </table>
+
+                            <!-- <input type="submit" name="check_record" value="{{i}}" style="width:28vh"> -->
+                        </center>
+                        <!-- {{ patient_info["records"] }} -->
                     </td>
                 </tr><br>
             </table>
@@ -108,7 +126,7 @@ Private and Confidential. Internal Use Only.
     <div class="summary">
         <center>
             <br>
-            SUMMARY OF INFORMATION
+            <h2>SUMMARY OF INFORMATION</h2>
             <br>
             <table style="width: 100%; text-align: justify">
                 <tr>
@@ -119,20 +137,21 @@ Private and Confidential. Internal Use Only.
                 </tr>
                 <tr>
                     <td>
-                        Average call length : 999
+                        Average call length : 5 minutes
                     </td>
                     <td>
-                        <ol type="1">
-                            <li>headache</li>
-                            <li>fever</li>
-                            <li>cough</li>
-                        </ol>
+                        <p style="text-align:center; background-color: rgb(159, 174, 182);">
+                            <image src="{{ url_for('static', filename='images/wordwall/symptoms.png')}}" width="300"
+                                height="300">
+                            </image>
+                        </p>
                     </td>
                     <td>
-                        <ol type="1">
-                            <li>death</li>
-                            <li>cough</li>
-                        </ol>
+                        <p style="text-align:center; background-color: rgb(159, 174, 182);">
+                            <image src="{{ url_for('static', filename='images/wordwall/raw_keywords.png')}}" width="300"
+                                height="300">
+                            </image>
+                        </p>
                     </td>
                     <td>
                         <ol type="1">
@@ -140,10 +159,8 @@ Private and Confidential. Internal Use Only.
                         </ol>
                     </td>
                 </tr><br>
-            </table>
+            </table><br>
         </center>
-
-
     </div>
 
     {% endblock %}
