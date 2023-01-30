@@ -6,13 +6,6 @@ Hello, how may I help you today? I'm pretty sure I have the flu and I need advic
 """
 
 kw_model = KeyBERT()
-keywords = kw_model.extract_keywords(doc)
+print(kw_model.extract_keywords(doc))
 
 print(kw_model.extract_keywords(doc, keyphrase_ngram_range=(1, 1), stop_words=None))
-#[
-#    ('learning', 0.4604),
-#    ('algorithm', 0.4556),
-#    ('training', 0.4487),
-#    ('class', 0.4086),
-#    ('mapping', 0.3700)
-#]
