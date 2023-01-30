@@ -1,5 +1,6 @@
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
+import spacy
 
 def read_csv(file_name):
     txt_file = open(file_name, "r")
@@ -48,24 +49,37 @@ def wordwall(file_name):
     
     plt.savefig(file_name+".png")
 
+def faq():
+    scores = []
+    questions = read_csv("agg_questions.txt")
+    nlp = spacy.load("en_core_web_lg")
+    for question_1 in questions:
+        q1 = nlp(question_1)
+        score = 0
+        for question_2 in questions:
+            q2 = nlp(question_2)
+            score += q1.similarity(q2)
+        scores.append(score)
+
+    faqs = []
+    for score, question in zip(scores, questions):
+        faqs.append([score, question])
+
+    faqs = sorted(faqs, key=lambda x: x[0], reverse=True)
+    
+    with open('agg_faqs.txt', 'w') as f:
+        print(faqs, sep='; ', file=f)
+    return
+
 file_names = ["questions", "raw_keywords", "symptoms", "verbs", "names", "orgs", "dates"]
 word_wall_names = ["raw_keywords", "symptoms", "verbs", "names", "orgs"]
 
 
-for name in file_names:
-    aggregate_files(name)
+# for name in file_names:
+#     aggregate_files(name)
 
-for name in word_wall_names:
-    wordwall(name)
+# for name in word_wall_names:
+#     wordwall(name)
 
-# aggregate_files("questions")
-# aggregate_files("raw_keywords")
-# aggregate_files("symptoms")
-# aggregate_files("verbs")
-# aggregate_files("names")
-# aggregate_files("orgs")
-# aggregate_files("dates")
-
-
-# wordwall("agg_"+raw_keywords+")
+faq()
 
