@@ -134,6 +134,7 @@ class ConsultView(MethodView):
             }
             db.record.insert_one(consult_record)
             db.user.find_one_and_update({"username": self.username}, {"$push": {"records": self.id}})
+            self.question_num = 0
             return render_template("consult.html", team_name="Team Red", content=None, diagnosis=conditions)
 
         if "symptoms" in request.form:

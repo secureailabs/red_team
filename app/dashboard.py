@@ -57,8 +57,6 @@ def get_map(data):
 
 
 def get_age_histogram(df, state=None):
-    print(state)
-    print(df)
     if state is not None:
         df = df[df["state"] == state]
 
