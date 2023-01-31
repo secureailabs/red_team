@@ -19,4 +19,4 @@ if __name__ == "server":
     server.register_blueprint(patient_bp)
     server.register_blueprint(pag_bp)
     server = create_dashboard(server)
-    server.run(debug=True)
+    server.run(debug=True, host="0.0.0.0")

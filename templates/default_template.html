@@ -31,8 +31,8 @@ Private and Confidential. Internal Use Only.
         <div class="slogan">
             {% block slogan %}
             <center>
-                <a href="http://127.0.0.1:5000">
-                    <image src="{{ url_for('static', filename='images/logo.png')}}"></image>
+                <a href="{{ url_for('bp.home') }}">
+                    <image src=" {{ url_for('static', filename='images/logo.png' )}}"></image>
                 </a>
             </center>
             {% endblock %}
@@ -40,7 +40,7 @@ Private and Confidential. Internal Use Only.
         <div class="banner" style="height:100%">
             {% block banner %}
             <h1>
-                <center><a href="http://127.0.0.1:5000"> {{ team_name }}</a></center>
+                <center><a href="{{ url_for('bp.home') }}"> {{ team_name }}</a></center>
             </h1>
             <h3>
                 <center>A guided Experience for Patients</center>
