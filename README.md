@@ -26,7 +26,11 @@ pip install wordcloud
 # Run the project
 
 ```
-flask --app server --debug run
+flask --app server --debug run 
+
+Run app using ipv4
+flask --app server --debug run --host "0.0.0.0" 
+
 ```
 
 # Patient register:
